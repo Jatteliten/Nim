@@ -1,12 +1,16 @@
 package Nim2;
 import java.util.Scanner;
-    public class Humanplayer{
-        final public String name(){
-            return "Human";
+    public class Humanplayer {
+
+        private String name;
+        public String getName(){
+            return name;
+        }
+        public void setName(String name){
+            this.name = "Human";
         }
 
-        public int move() {
-            Pile p = new Pile();
+        public int move(Pile p) {
             Scanner scan = new Scanner(System.in);
             System.out.println("Your move. There are " + p.getRemainingMatches() + " matches");
             int move = 1;
@@ -21,13 +25,13 @@ import java.util.Scanner;
                 }
 
             }
+
             p.setMatchesTaken(move);
-            p.setRemainingMatches();
+
             return move;
         }
 
-        public String result() {
-            Pile p = new Pile();
+        public String result(Pile p) {
             return "You remove " + p.getMatchesTaken() + " matches";
         }
 
