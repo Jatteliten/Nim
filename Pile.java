@@ -1,11 +1,25 @@
 package Nim2;
-
 public class Pile extends Game {
 
-    int remainingMatches = 13;
-    int matchesTaken;
-    public int matches (){
-        return remainingMatches-matchesTaken;
+
+    //public void remainingMatches(int parseInt) {
+   // }
+    public int remainingMatches;
+
+    public int matchesTaken;
+
+    public int getRemainingMatches (){
+        return remainingMatches;
+    }
+    public void setRemainingMatches(){
+        remainingMatches -= matchesTaken;
+    }
+
+    public int getMatchesTaken(){
+        return matchesTaken;
+    }
+    public void setMatchesTaken(int remove){
+        this.matchesTaken = remove;
     }
 
 

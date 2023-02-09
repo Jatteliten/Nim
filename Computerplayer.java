@@ -1,12 +1,19 @@
 package Nim2;
 import java.util.Random;
     public class Computerplayer {
-        String name = "Computer";
-        String callOut = "";
-        Random rand = new Random();
-        Pile p = new Pile();
-        int max = p.matches() / 2;
-        String move = String.valueOf(rand.nextInt(max) + 1);
-        String result = "Computer removes x matches";
+        final public String name() {
+            return "Computer";
+        }
+
+        public String move(){
+            Pile p = new Pile();
+            Random rand = new Random();
+            int max = p.remainingMatches / 2;
+            return String.valueOf(rand.nextInt(max) + 1);
+        }
+        public String result(){
+            return "Computer removes x matches";
+
+        }
 
     } // Computerplayer

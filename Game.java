@@ -2,98 +2,67 @@ package Nim2;
 
 public class Game {
 
-    int activePlayer = 1;
-    String winner;
-    String loser;
-    String win = (winner + " wins, " + loser + " loses.");
-
     public void playGame(){
+
+        String winner = null;
+        String loser = null;
 
         Humanplayer h = new Humanplayer();
         Computerplayer c = new Computerplayer();
 
-        String playerOneMove = h.move;
-        String playerOneCallOut = h.callOut;
-        String playerOneName = h.name;
-        String playerOneResult = h.result;
-
-        String playerTwoMove = h.move;
-        String playerTwoCallOut = h.callOut;
-        String playerTwoName = h.name;
-        String playerTwoResult = h.result;
+        //insert player here. h for human. c for computer.
+        String playerOneName = h.name();
+        String playerTwoName = h.name();
 
         Pile p = new Pile();
 
-        int Move = 0;
+        p.remainingMatches = 10;
+        p.setRemainingMatches();
 
-        System.out.println("Welcome to Nm\nPlayer 1: " + playerOneName + "\nPlayer 2: " + playerTwoName);
+        boolean firstPlayer = true;
+        boolean play = true;
 
-        int RemainingMatches = p.remainingMatches;
+            System.out.println("Welcome to Nm\nPlayer 1: " + playerOneName + "\nPlayer 2: " + playerTwoName);
 
-        while (RemainingMatches >= 1) {
+        while (play) {
+            System.out.println("Remaining matches: " + p.remainingMatches);
 
-            int MatchesTaken;
-
-            System.out.println("Remaining matches: " + RemainingMatches);
-
-            if (RemainingMatches == 1) {
-                System.out.println(win);
-                break;
+            if (p.remainingMatches == 1) {
+                System.out.println(winner + " wins, " + loser + " loses.");
+                play = false;
             }
 
             // Player 1
-            else if (activePlayer == 1) {
-                //insert player here
-                System.out.println(playerOneCallOut);
+            else if (firstPlayer) {
+                //insert player here. h for human. c for computer
+                int playerOneMove = h.move();
+                String playerOneResult = h.result();
 
-                try {
-                    Move = Integer.parseInt(playerOneMove);
-                }
-                catch (NumberFormatException e){
-                    System.out.println("Please input a number");
-                }
-
-                MatchesTaken = Move;
-
-                if (MatchesTaken > RemainingMatches/2 || MatchesTaken < 1) {
-                    System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + RemainingMatches/2);
-                    Move = 0;
-                    activePlayer = 1;
+                if (playerOneMove > p.remainingMatches/2 || playerOneMove < 1) {
+                    System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + p.remainingMatches/2);
                 }
                 else {
                     System.out.println(playerOneResult);
-                    RemainingMatches = RemainingMatches - MatchesTaken;
                     winner = playerOneName;
                     loser = playerTwoName;
-                    activePlayer = 2;
+                    firstPlayer = false;
                 }
             } //activePlayer 1
 
             // Player 2
-            else if (activePlayer == 2) {
-                //insert player here
-                System.out.println(playerTwoCallOut);
+            else {
+                //insert player here. h for human. c for computer
+                int playerTwoMove = h.move();
+                String playerTwoResult = h.result();
 
-                try {
-                    Move = Integer.parseInt(playerTwoMove);
-                }
-                catch (NumberFormatException e){
-                    System.out.println("Please input a number");
-                }
-
-                MatchesTaken = Move;
-
-                if (MatchesTaken > RemainingMatches/2 || MatchesTaken < 1) {
-                    System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + RemainingMatches/2);
-                    Move = 0;
-                    activePlayer = 2;
+                if (playerTwoMove > p.remainingMatches/2 || playerTwoMove < 1) {
+                    System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + p.remainingMatches/2);
                 }
                 else {
                     System.out.println(playerTwoResult);
-                    RemainingMatches = RemainingMatches - MatchesTaken;
                     winner = playerTwoName;
                     loser = playerOneName;
-                    activePlayer = 1;
+                    firstPlayer = true;
                 }
             } //activePlayer 2
 
