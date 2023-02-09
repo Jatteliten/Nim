@@ -7,12 +7,12 @@ public class Game {
         String winner = null;
         String loser = null;
 
-        Humanplayer h = new Humanplayer();
-        Computerplayer c = new Computerplayer();
+        Humanplayer human = new Humanplayer();
+        Computerplayer computer = new Computerplayer();
 
         //insert player here. h for human. c for computer.
-        String playerOneName = h.getName();
-        String playerTwoName = c.getName();
+        String playerOneName = human.getName();
+        String playerTwoName = computer.getName();
 
         Pile p = new Pile();
 
@@ -29,14 +29,14 @@ public class Game {
 
             if (p.getRemainingMatches() == 1) {
                 System.out.println(winner + " wins, " + loser + " loses.");
-                play = false;
+                break;
             }
 
             // Player 1
             else if (firstPlayer) {
                 //insert player here. h for human. c for computer
-                int playerOneMove = h.move(p);
-                String playerOneResult = h.result(p);
+                int playerOneMove = human.move(p);
+                String playerOneResult = human.result(p);
 
                 if (playerOneMove > p.getRemainingMatches() / 2 || playerOneMove <= 0) {
                     System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + p.getRemainingMatches() / 2);
@@ -53,8 +53,8 @@ public class Game {
             // Player 2
             else {
                 //insert player here. h for human. c for computer
-                int playerTwoMove = c.move(p);
-                String playerTwoResult = c.result(p);
+                int playerTwoMove = computer.move(p);
+                String playerTwoResult = computer.result(p);
 
                 if (playerTwoMove > p.getRemainingMatches()/2 || playerTwoMove <= 0) {
                     System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + p.getRemainingMatches()/2);
