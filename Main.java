@@ -1,11 +1,11 @@
-package Nim2;
+// Daniel Isaksson
+// Daniel.isaksson90@gmail.com
+package Nim;
 
 public class Main {
     public static void main(String[] args){
-      //  Pile setRemainingMatches = new Pile();
-       // setRemainingMatches.remainingMatches(Integer.parseInt(args[0]));
         Game runGame = new Game();
-        runGame.playGame();
-    }
+        runGame.playGame(Integer.parseInt(args[0]));
+    }//main
 
-}
+}//Main

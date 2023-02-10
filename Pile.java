@@ -1,8 +1,7 @@
-package Nim2;
+// Daniel Isaksson
+// Daniel.isaksson90@gmail.com
+package Nim;
 public class Pile {
-
-
-    //public void remainingMatches(int parseInt) {
 
     private int remainingMatches;
     private int matchesTaken;
@@ -24,4 +23,4 @@ public class Pile {
     }
 
 
-}
+} //Pile

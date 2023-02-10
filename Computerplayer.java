@@ -1,21 +1,25 @@
-package Nim2;
-    public class Computerplayer extends Player {
+// Daniel Isaksson
+// Daniel.isaksson90@gmail.com
+package Nim;
+public class Computerplayer extends Player {
 
-        public Computerplayer(){
-            this.name = "Computer";
-        }
+    public Computerplayer(){
+        this.name = "Computer";
+    }
 
-        public int move(Pile p){
-            int min = 1;
-            int max = p.getRemainingMatches() / 2;
-            int compMove = (int) Math.floor(Math.random() *(max - min + 1) + min);
-            p.setMatchesTaken(compMove);
-            return compMove;
-        }
+    //Determine number of matches computer will remove
+    public int move(Pile pile){
+        int min = 1;
+        int max = pile.getRemainingMatches() / 2;
+        int compMove = (int) Math.floor(Math.random() *(max - min + 1) + min);
+        pile.setMatchesTaken(compMove);
+        return compMove;
+    }
 
-        public String result(Pile p){
-            return "Computer removes " + p.getMatchesTaken()+ " matches";
+    //Set message to display at end of turn for computer player
+    public String result(Pile p){
+        return getName() + " removes " + p.getMatchesTaken()+ " matches";
 
-        }
+    }
 
-    } // Computerplayer
+} // Computerplayer
