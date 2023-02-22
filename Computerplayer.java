@@ -17,8 +17,8 @@ public class Computerplayer extends Player {
     }
 
     //Set message to display at end of turn for computer player
-    public String result(Pile p){
-        return getName() + " removes " + p.getMatchesTaken()+ " matches";
+    public String result(Pile pile){
+        return getName() + " removes " + pile.getMatchesTaken()+ " matches";
 
     }
 

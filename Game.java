@@ -26,7 +26,7 @@ public class Game {
 
             System.out.println("Welcome to Nm\nPlayer 1: " + playerOneName + "\nPlayer 2: " + playerTwoName);
 
-        while (play) {
+        PLAY: while (play) {
             pile.setRemainingMatches(pile.getRemainingMatches() - pile.getMatchesTaken());
             System.out.println("Remaining matches: " + pile.getRemainingMatches());
 
@@ -45,7 +45,6 @@ public class Game {
                 if (playerOneMove > pile.getRemainingMatches() / 2 || playerOneMove <= 0) {
                     //Restarts turn if match removed total is not allowed
                     System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + pile.getRemainingMatches() / 2);
-                    pile.setRemainingMatches(pile.getRemainingMatches() + pile.getMatchesTaken());
                 }
                 else {
                     //Change number of remaining matches. Change winner
@@ -53,6 +52,7 @@ public class Game {
                     winner = playerOneName;
                     loser = playerTwoName;
                     firstPlayer = false;
+                    continue PLAY;
                 }
             } //while player 1
 
@@ -65,7 +65,6 @@ public class Game {
                 if (playerTwoMove > pile.getRemainingMatches()/2 || playerTwoMove <= 0) {
                     //Restarts turn if match removed total is not allowed
                     System.out.println("Sorry, illegal move.\nPlease choose at least one match and at most " + pile.getRemainingMatches()/2);
-                    pile.setRemainingMatches(pile.getRemainingMatches() + pile.getMatchesTaken());
                 }
                 else {
                     //Change number of remaining matches. Change winner
@@ -73,6 +72,7 @@ public class Game {
                     winner = playerTwoName;
                     loser = playerOneName;
                     firstPlayer = true;
+                    continue PLAY;
                 }
             } //while player 2
 

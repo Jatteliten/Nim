@@ -10,15 +10,15 @@ public class Humanplayer extends Player{
     }
 
     //Scan for matches to remove from player
-    int move(Pile pile) {
+    public int move(Pile pile) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Your move. There are " + pile.getRemainingMatches() + " matches");
-        int move = 1;
+        int humanMove = 0;
         boolean numberCorrect = false;
         while(!numberCorrect) {
             try {
                 String moveTry = scan.next();
-                move = Integer.parseInt(moveTry);
+                humanMove = Integer.parseInt(moveTry);
                 numberCorrect = true;
             } catch (NumberFormatException e) {
                 System.out.println("Please provide a number between one and " + pile.getRemainingMatches() / 2);
@@ -26,8 +26,8 @@ public class Humanplayer extends Player{
 
         }
 
-        pile.setMatchesTaken(move);
-        return move;
+        pile.setMatchesTaken(humanMove);
+        return humanMove;
     }
 
     //Set message to display at end of turn for player
